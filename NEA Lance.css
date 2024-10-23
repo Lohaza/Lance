@@ -132,32 +132,51 @@ button:hover{
     height: 60%;
     width: 70%;
     background-color:rgb(20, 2, 58);
-    border-style:double;
+    border-style:solid;
     border-radius: 25px;
     border-color: rgb(255, 255, 255);
 }
 
+.create_account_container_main_inside_form_left{
+    display: flex;
+    flex-direction: column;
+    position:absolute;
+    top:28%;
+    padding-left: 6%;
+}
+#create_account_lance_logo{
+    height: 70px;
+    width:70px;
+    position: relative;
+    top:7%;
+    left:3%;
+
+
+
+
+}
+
 #create_account_header_main_inside{
     color:white;
-    padding:3%;
+    font-size: 400%;
 }
 
 #create_account_paragraph_main_inside{
-    font-size: medium;
+    font-size: 60%;
 }
 
 .create_account_container_main_inside_form{
     display: flex;
 }
 
-.create_account_container_main_inside_form_left{
-    display: flex;
-    padding-left: 9%;
-    flex-direction: column;
-    position:absolute;
-    top:38%;
-}
 
+.create_account_container_main_inside_form_down{
+    display: flex;
+    position: absolute;
+    flex-direction: row;
+    top: 65%;
+    
+}
 
 #LB_username_create_your_account_form{
     color:white;
@@ -168,12 +187,10 @@ button:hover{
 #input_username_Create_your_account_form[type=text]{
     padding:12px 20px;
     margin-left: 3%;
-    margin-bottom: 3%;
 }
 
-#input_username_Create_your_account_form[type=text]{
-    margin-left: 3%;
-    padding:12px 20px;
+#input_username_Create_your_account_form[type=text]:focus{
+    border: 3px solid rgb(0, 204, 255);
 }
 
 #LB_Email_create_your_account_form{
@@ -188,17 +205,10 @@ button:hover{
 }
 
 #input_Email_Create_your_account_form[type=text]:focus {
-    border: 3px solid #555;
+    border: 3px solid rgb(0, 204, 255);
   }
 
 
-.create_account_container_main_inside_form_right{
-    display: flex;
-    flex-direction: column;
-    position:absolute;
-    right: 50%;
-    
-}
 
 
 #LB_password_create_your_account_form{
@@ -213,5 +223,5 @@ button:hover{
 }
 
 #input_password_Create_your_account_form[type=password]:focus {
-    border: 3px solid #555;
+    border: 3px solid rgb(0, 204, 255);
   }
