@@ -116,170 +116,44 @@ button:hover{
 
 /* page 2- Create your account */
 
-.create_account_container_main_outside{
+.outside{
     display: flex;
-    justify-content: center;
-    align-items: center;
     width: 100%;
     height:100%;
-    position: relative;
-    background-color:rgb(6, 1, 19);
-    
+    justify-content: center;
+    align-items: center;
+    background-color:#0b0120
 }
-.create_account_container_main_inside{
+.main{
     display:flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    height: 60%;
-    width: 70%;
-    background-color:rgb(11, 1, 32);
-    border-style:solid;
-    border-radius: 25px;
-    border-color: rgb(255, 255, 255);
-}
-
-.create_account_container_main_inside_form_left{
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    position:absolute;
-    top:28%;
-    padding-left: 6%;
-    gap: 10%;
-}
-#create_account_lance_logo{
-    height: 70px;
-    width:70px;
-    position: relative;
-    top:7%;
-    left:3%;
-
-
-
-
-}
-
-#create_account_header_main_inside{
+    background-color:#0b0120 ; 
     color:white;
-    font-size: 400%;
+    gap:3rem;
+    height: 450px;
+    width: 700px;
+}
+.title{
+margin:5px;
+font-size: 30px;
 }
 
-#create_account_paragraph_main_inside{
-    font-size: 60%;
+.inputs_container{
+display:flex;
+flex-direction:column;
+text-align:center;
 }
 
-.create_account_container_main_inside_form{
-    display: flex;
-    flex-wrap: wrap;
+.input{
+display:flex;
+flex-direction:column;
+margin:10px;
 }
 
-@media(max-width:1500px) {
-    .create_account_container_main_inside_form_input{
-        display: flex;
-        flex-wrap: wrap;
-        position: absolute;
-        flex-direction: row;
-        top:68%;
-        }
-
-        #LB_username_create_your_account_form{
-            color:white;
-            font-size: 175%;
-        }
-
-
-        #input_username_Create_your_account_form[type=text]{
-            padding:6px 10px;
-        }
-
-        #LB_Email_create_your_account_form{
-            color:white;
-            font-size: 175%;
-        }
-        
-        #input_Email_Create_your_account_form[type=text]{
-            padding:6px 10px;
-        }
-
-        #LB_password_create_your_account_form{
-            color:white;
-            font-size: 175%;
-        }
-        
-        #input_password_Create_your_account_form[type=password]{
-            padding:6px 10px;
-        }
+.inp{
+padding:8px 4px
 }
 
-
-@media(min-width:1500px) {
-.create_account_container_main_inside_form_input{
-    display: flex;
-    flex-wrap: wrap;
-    position: absolute;
-    flex-direction: column;
-    right:28%;
-    }
-
-    
-    #LB_username_create_your_account_form{
-        color:white;
-        font-size: 175%;
-    }
-
-
-    #input_username_Create_your_account_form[type=text]{
-        padding:12px 20px;
-    }
-
-    #LB_Email_create_your_account_form{
-        color:white;
-        font-size: 175%;
-    }
-    
-    #input_Email_Create_your_account_form[type=text]{
-        padding:12px 20px;
-    }
-
-    #LB_password_create_your_account_form{
-        color:white;
-        font-size: 175%;
-    }
-    
-    #input_password_Create_your_account_form[type=password]{
-        padding:12px 20px;
-    }
-}
-
-.create_your_account_form_box{
-    display: flex;
-    flex-wrap: wrap;
-}
-
-
-
-
-
-#input_username_Create_your_account_form[type=text]:focus{
-    border: 3px solid rgb(0, 204, 255);
-}
-
-
-
-#input_Email_Create_your_account_form[type=text]:focus {
-    border: 3px solid rgb(0, 204, 255);
-  }
-
-
-
-
-
-
-#input_password_Create_your_account_form[type=password]:focus {
-    border: 3px solid rgb(0, 204, 255);
-  }
-
-#submit_password_Create_your_account_form{
+#enter_create{
     border: none;
     color: white;
     padding: 32px 64px;
@@ -291,66 +165,33 @@ button:hover{
     border: solid 4px rgb(0, 204, 255);
     background-color: rgb(11, 1, 32);
     transition-duration: 0.4s;
-    position: relative;
-    margin:15px;
-
 }
-#submit_password_Create_your_account_form:hover{
+
+#enter_create:hover{
     background-color:rgb(0, 204, 255) ;
     color: rgb(11, 1, 32);
 }
 
-/*break- test from this point*/
-.outside{
-    display: flex;
-    width: 100%;
-    height:100%;
-    justify-content: center;
-    background-color:#0b0120
-}
+
+@media(max-width: 1000px){
 .main{
-    display:flex;
-    background-color:#0b0120 ; 
-    color:white;
-    gap:3rem;
-  }
-  .title{
-    margin:5px;
-  }
-  
-  .inputs_container{
-    display:flex;
-    flex-direction:column;
-    text-align:center;
-  }
-  
-  .input{
-    display:flex;
-    flex-direction:column;
-    margin:10px;
-    }
-    
-   .inp{
-      padding:8px 4px
-   }
-  
-  @media(max-width: 500px){
-   .main{
-    display:flex;
-    flex-direction:column;
-    height:100%;
-    width:100%;
-    background-color:#0b0120 ; 
-    color:white;
-    gap:3rem;
-  }
-  
-  .inputs_container{
-    display:flex;
-    flex-direction:column;
-    text-align:center;
-    margin:20px;
-    margin-top:-20px;
-  }
-  
-  }
+display:flex;
+flex-direction:column;
+background-color:#0b0120 ; 
+color:white;
+gap:3rem;
+}
+
+.inputs_container{
+display:flex;
+flex-direction:column;
+text-align:center;
+margin:100px;
+margin-top:-20px;
+}
+
+.inp{
+padding:4px 2px
+}
+
+}
