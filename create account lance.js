@@ -33,3 +33,16 @@ if (hash_pass==hash_con_pass){
 }
 
 }
+
+function topython(usrdata){
+    $.ajax({
+        url: "fill url here",
+        type: "POST",
+        data: { information : "You have a very nice website, sir." , userdata : usrdata },
+        dataType: "json",
+        success: function(data) {
+            <!-- do something here -->
+            $('#somediv').html(data);
+        }});
+$("#someButton").bind('click', toPython(something));
+}
