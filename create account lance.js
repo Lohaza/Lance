@@ -2,8 +2,6 @@
 function enter(){
     let pass=document.getElementById("pass_in").value;
     let con_pass=document.getElementById("confirm_pass_in").value;
-    hash_pass=stringToHash(pass)
-    hash_con_pass=stringToHash(con_pass)
     pass_check(pass,con_pass)
     reset()
 }

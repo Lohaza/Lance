@@ -1,7 +1,9 @@
+<head>
 <link rel="stylesheet" href="./NEA Lance.css">
 <script src="./create account lance.js"></script>
 </head>
 
+<main>
 <div class="outside">
 <div class="main">
     <div class="title"> 
@@ -27,7 +29,11 @@
             <label class="LB" for="email">email:</label>
             <input id="email_in" type="text" class="inp" placeholder="enter email here..">
         </div>
-        <button class="button" onclick="enter()">ENTER</button>
+        <button class="button" onclick="enter()" >ENTER</button>
+        <button onclick="fetchData()">Fetch Data from Server</button>
+        <button onclick="submitData()">Send Data to Server</button>
+        <div id="response"></div>
     </div>
 </div>
 </div>
+</main>
