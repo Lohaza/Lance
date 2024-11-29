@@ -33,14 +33,20 @@ function Submit(pass,con_pass){
         headers:{
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify({key: "value"})
     })
-    .then(Response=> Response.json())
+    .then(Response=> {
+        if (!Response.ok){
+            throw new Error("Network response was not ok");
+        }
+        return Response.json();
+    })
+
     .then(data=>{
         console.log(data);
         window.alert(data.message)
     })
-    .catch(console.error("Error:",error));
+    .catch(console.error("Error: ", Error));
 
 }
 
