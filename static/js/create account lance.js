@@ -3,8 +3,8 @@ function enter(){
     let con_pass=document.getElementById("confirm_pass_in").value;
     let match=false
     pass_check(pass,con_pass)
-    reset()
     Submit(pass,con_pass)
+    reset()
 }
 
 
@@ -23,25 +23,19 @@ function pass_check(pass,con_pass,){
 function Submit(pass,con_pass){
 
     let data ={
-        "password_id":pass,
-        "confirm_password_id":con_pass
+        'password_id':pass,
+        'confirm_password_id':con_pass
     };
 
 
-    fetch("/submit",{
-        method:"POST",
-        headers:{
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({key: "value"})
-    })
-    .then(Response=> {
-        if (!Response.ok){
-            throw new Error("Network response was not ok");
-        }
-        return Response.json();
-    })
+    fetch('/submit',{
+        method:'POST',
+        headers:{'Content-Type': 'application/json'},
+        body:JSON.stringify({data})
+        })
 
+
+    .then(response => response.json())
     .then(data=>{
         console.log(data);
         window.alert(data.message)

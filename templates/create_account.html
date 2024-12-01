@@ -1,13 +1,13 @@
 <head>
-<link rel="stylesheet" href="./NEA Lance.css">
-<script src="./create account lance.js"></script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/NEA Lance.css') }}">
+<script src="{{ url_for('static', filename='js/create account lance.js') }}"></script>
 </head>
 
 <main>
 <div class="outside">
 <div class="main">
     <div class="title"> 
-        <img id="lance_nav_logo" src="./Lance Logo.png">
+        <img id="lance_nav_logo" src="{{ url_for('static', filename='images/Lance Logo.png') }}">
         <h1>Create Your Lance Account! </h1>
         <p>Please enter the following: </p>
         
