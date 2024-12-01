@@ -12,14 +12,14 @@
         <p>Please enter the following: </p>
         
     </div>
-    <form class="inputs_container">
+    <form class="inputs_container" method="post">
         <div class="input">
             <label class="LB" for="username">username:</label>
             <input type="text" class="inp" placeholder="enter username here..">
         </div>
         <div class="input">
             <label class="LB" for="password">password:</label>
-            <input id="pass_in" type="password" class="inp" placeholder="enter password here..">
+            <input id="pass_in" type="password" class="inp" placeholder="enter password here.." name="up">
         </div>
         <div class="input">
             <label class="LB" for="confirm password">confirm password:</label>
@@ -29,8 +29,7 @@
             <label class="LB" for="email">email:</label>
             <input id="email_in" type="text" class="inp" placeholder="enter email here..">
         </div>
-        <button class="button" onclick="enter()" >ENTER</button>
-        <div id="response"></div>
+        <button type="submit" class="button" onclick="enter()" >ENTER</button>
     </form>
 </div>
 </div>

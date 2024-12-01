@@ -20,27 +20,4 @@ function pass_check(pass,con_pass,){
     }
 }
 
-function Submit(pass,con_pass){
-
-    let data ={
-        'password_id':pass,
-        'confirm_password_id':con_pass
-    };
-
-
-    fetch('/submit',{
-        method:'POST',
-        headers:{'Content-Type': 'application/json'},
-        body:JSON.stringify({data})
-        })
-
-
-    .then(response => response.json())
-    .then(data=>{
-        console.log(data);
-        window.alert(data.message)
-    })
-    .catch(console.error("Error: ", Error));
-
-}
 
