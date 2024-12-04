@@ -16,6 +16,13 @@ def create_your_account():
     else:
         return render_template("create_account.html")
 
+
+@app.route("/Lance/Welcome")
+def welcome():
+    return render_template("Welcome.html")
+
+
+
 @app.route("/user")
 def user(usr):
     return f"<h1>{usr}</h1>"
