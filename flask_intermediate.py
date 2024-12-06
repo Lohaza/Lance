@@ -4,15 +4,13 @@ from flask_cors import CORS
 app= Flask(__name__, static_folder='static')
 CORS(app)
 
-pass_id=""
-con_pass_id=""
 
 @app.route("/Lance/Create_your_account", methods=["POST","GET"])
 def create_your_account():
     if request.method == "POST":
-        user_name=(request.json["name"])
-        user_pass=(request.json["password"])
-        user_email=(request.json["email"])
+        user_name=request.json["name"]
+        user_pass=request.json["password"]
+        user_email=request.json["email"]
         return redirect(url_for("user"))
     else:
         return render_template("create_account.html") 
