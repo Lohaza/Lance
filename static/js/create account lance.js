@@ -3,7 +3,10 @@ function enter(){
     let pass=document.getElementById("pass_in").value;
     let con_pass=document.getElementById("confirm_pass_in").value;
     let email=document.getElementById("email_in").value;
-    pass_check(pass,con_pass)
+
+    let match = pass_check(pass,con_pass);
+
+    if (match===true){
     fetch("http://127.0.0.1:5000/Lance/Create_your_account",{
         method:"POST",
         body: JSON.stringify({
@@ -21,18 +24,24 @@ function enter(){
     })
     reset()
 }
-
+}
 
 function reset(){
-    document.getElementById("confirm_pass_in").value="";
+    document.getElementById("username_in").value="";
     document.getElementById("pass_in").value="";
+    document.getElementById("confirm_pass_in").value="";
+    document.getElementById("email_in").value="";
 }
 
 
-function pass_check(pass,con_pass,){
-    if (pass==con_pass){
-        console.log("passwords match")
-    }
+function pass_check(pass,con_pass){
+    if (pass===con_pass){
+        return true;
+     } else{
+        window.alert("passwords do not match")
+        return false;
+     }
 }
+
 
 

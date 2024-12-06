@@ -13,7 +13,7 @@ def create_your_account():
         user_name=(request.json["name"])
         user_pass=(request.json["password"])
         user_email=(request.json["email"])
-        return [user_name,user_pass,user_email]
+        return redirect(url_for("user"))
     else:
         return render_template("create_account.html") 
 
