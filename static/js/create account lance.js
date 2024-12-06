@@ -1,9 +1,24 @@
 function enter(){
+    let name=document.getElementById("username_in").value;
     let pass=document.getElementById("pass_in").value;
     let con_pass=document.getElementById("confirm_pass_in").value;
-    let match=false
+    let email=document.getElementById("email_in").value;
     pass_check(pass,con_pass)
-    Submit(pass,con_pass)
+    fetch("http://127.0.0.1:5000/Lance/Create_your_account",{
+        method:"POST",
+        body: JSON.stringify({
+            name:name,
+            password:pass,
+            email:email,
+        }),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8'
+        }
+    })
+    .then (response=> {
+        console.log(response)
+
+    })
     reset()
 }
 
