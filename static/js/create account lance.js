@@ -4,9 +4,8 @@ function enter(){
     let con_pass=document.getElementById("confirm_pass_in").value;
     let email=document.getElementById("email_in").value;
 
-    let match = pass_check(pass,con_pass);
 
-    if (match===true){
+    if (validation(name,pass,con_pass,email)){
     fetch("http://127.0.0.1:5000/Lance/Create_your_account",{
         method:"POST",
         body: JSON.stringify({
@@ -19,10 +18,18 @@ function enter(){
         }
     })
     .then (response=> {
-        console.log(response)
+        if (response.ok){
+            window.location.href="/user";
+        }else{
+            console.log("Error withe the request:", response);
+        }
 
     })
-    reset()
+    .catch(error => {
+        console.error("Network error:", error)
+    });
+
+    reset();
 }
 }
 
@@ -34,14 +41,22 @@ function reset(){
 }
 
 
-function pass_check(pass,con_pass){
-    if (pass===con_pass){
-        return true;
-     } else{
-        window.alert("passwords do not match")
+function validation(name,pass,con_pass,email){
+    if (name === "" || pass === "" || con_pass === "" || email === "") {
+        window.alert("All fields must be filled out!");
         return false;
-     }
+    }
+
+    if (pass !== con_pass) {
+        window.alert("Passwords do not match!");
+        return false;
+    }
+
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    if (!emailPattern.test(email)) {
+        window.alert("Please enter a valid email address!");
+        return false;
+    }
+
+    return true;
 }
-
-
-
