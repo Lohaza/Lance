@@ -20,7 +20,7 @@ def create_your_account():
         user_email=request.json["email"]
         hashed_password=pass_hash(user_pass)
 
-        print("Received POST data:", user_name, user_pass, user_email)
+        print("Received POST data:")
         print("Hashed password:", hashed_password)
 
         print("Redirecting to /user...") 
