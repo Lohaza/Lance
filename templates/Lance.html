@@ -1,0 +1,35 @@
+<head>
+    <title>Lance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/NEA Lance.css') }}">
+</head>
+<body class="background">
+    <nav class="menu_navbar">
+        <ul>
+            <li><img id="lance_nav_logo" src="{{ url_for('static', filename='images/Lance Logo.png') }}">></li>
+            <li><a href="{{url_for('Lance')}}">LANCE</a></li>
+            <li><a href="">Topics</a></li>
+            <li><a href="">support</a></li>
+            <li><a href="">settings</a></li>
+
+
+            <div class="menu_navbar_right">
+
+                <li><a href="{{url_for('create_your_account')}}">sign in</a></li>
+                <li><a href="{{url_for('welcome')}}">sign up</a></li>
+            </div>
+        </ul>
+    </nav>
+    <div class="main">
+
+        <div class="search_bar">
+            <input type="text" placeholder="search" >
+            
+
+
+
+
+        </div>
+    </div>
+
+
+</body>

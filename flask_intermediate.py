@@ -34,7 +34,9 @@ def create_your_account():
 def welcome():
     return render_template("Welcome.html")
 
-
+@app.route("/Lance")
+def Lance():
+    return render_template("Lance.html")
 
 @app.route("/user")
 def user():
