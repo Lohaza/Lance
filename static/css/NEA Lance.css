@@ -92,12 +92,13 @@
     margin-left: 2rem;
 }
 
-.recommended{
+.main_rows{
     display: flex;
-    gap:2rem;
+    gap:1rem;
     margin-left:2rem;
     margin-right:2rem;
-    width: 100%;
+    width: 95%;
+    flex-wrap: wrap;
 }
 
 .block{
@@ -110,8 +111,8 @@
 .block_border{
     display: flex;
     border-radius: 29px;
-    height: 134px;
-    width:230px;
+    height: 96px;
+    width:160px;
     align-items: center;
     justify-content: center;
 }
