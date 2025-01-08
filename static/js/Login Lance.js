@@ -16,10 +16,13 @@ function enter(){
     })
     .then (response=> {
         if (response.ok){
-            window.location.href="/user";
+            window.location.href="/Lance";
         }else{
-            console.log("Error withe the request:", response);
-        }
+            response.json().then(data => {
+                console.log("Error:", data.error);
+                alert(data.error || "An error occurred while logging in.");
+        });
+    }
 
     })
     .catch(error => {

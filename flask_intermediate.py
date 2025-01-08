@@ -1,12 +1,13 @@
 
 import hashlib
+import logging
 import mysql.connector
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, jsonify, session
 from flask_cors import CORS
 app= Flask(__name__, static_folder='static')
 CORS(app)
 
-
+app.secret_key="EdLMg77c5cZJ"
 
 db=mysql.connector.connect(
     host="localhost",
@@ -64,25 +65,35 @@ def create_your_account():
 
 @app.route("/Lance/login", methods=["POST","GET"])
 def Login():
-    if request.method == "POST":
-        log_user_name=request.json["name"]
-        log_user_pass=request.json["password"]
-        mycursor.execute("SELECT * FROM Users WHERE name=%s",(log_user_name,))
-        user = mycursor.fetchone()
-        if user:
-            print("user found:",user)
+    try:
+        if request.method == "POST":
+            log_user_name=request.json["name"]
+            log_user_pass=request.json["password"]
 
-            store_pass=user[1]
+            if not log_user_name or not log_user_pass:
+                return jsonify({"error": "Missing username or password."}), 400
+        
+            mycursor.execute("SELECT * FROM Users WHERE name=%s",(log_user_name,))
+            user = mycursor.fetchone()
+            if user:
+                print("user found:",user)
 
-            if pass_hash(log_user_pass) == store_pass:
-                print("passwords match", user)
-                return redirect("/Lance/Welcome")
+                store_pass=user[1]
+
+                if pass_hash(log_user_pass) == store_pass:
+                    print("passwords match", user)
+                    session['user_id'] = user[2]
+                    session['username'] = user[0]
+                    return jsonify({"message": "Login successful"}), 200
+                else:
+                    print("Incorrect Password",)
+                    return jsonify({"error": "Incorrect password. Please try again."}), 401
             else:
-                print("Incorrect Password",)
-                return redirect("/Lance/login")
-        else:
-            print("User not found")
-            return redirect("/Lance/login")
+                print("User not found")
+                return jsonify({"error": "User not found. Please check your username."}), 404
+    except Exception as e:
+        logging.error("An error occurred during login: %s", str(e))
+        return jsonify({"error": "Internal Server Error. Please try again later."}), 500
     return render_template("Login.html")
 
 
