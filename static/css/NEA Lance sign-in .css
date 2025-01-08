@@ -124,7 +124,13 @@ button:hover{
     align-items: center;
     background-color:#0b0120
 }
-.main{
+
+
+
+
+
+
+.main_container{
     display:flex;
     background-color:#0b0120 ; 
     color:white;
@@ -132,10 +138,15 @@ button:hover{
     border: white;
     border-radius: 25px;
     border-style: solid;
+    height:400px;
+    width:800px;
+    justify-content: center;
+    align-items:center ;
 
   }
   .title{
     margin:5px;
+    font-size: large;
   }
   
   .inputs_container{

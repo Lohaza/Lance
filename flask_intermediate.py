@@ -17,9 +17,17 @@ db=mysql.connector.connect(
 )
 
 mycursor=db.cursor()
+
+#When you open SQL workbench use schematics to find the database Lance and typer into script "USE Lance" then type 
+# "SELECT *
+#FROM Users"
+#this will show you all the values in the table Users
+
+
 #mycursor.execute("CREATE DATABASE Lance")
 #mycursor.execute("CREATE TABLE Users(name VARCHAR(20),password VARCHAR(300), userID int PRIMARY KEY AUTO_INCREMENT)")
 #mycursor.execute("ALTER TABLE Users MODIFY password VARCHAR(255);")
+#mycursor.execute("SHOW DATABASES")
 
 mycursor.execute("SELECT * FROM Users")
 
