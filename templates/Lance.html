@@ -14,22 +14,48 @@
 
             <div class="menu_navbar_right">
 
-                <li><a href="{{url_for('create_your_account')}}">sign in</a></li>
+                <li><a href="">sign in</a></li>
                 <li><a href="{{url_for('welcome')}}">sign up</a></li>
             </div>
         </ul>
     </nav>
-    <div class="main">
 
+    <div class="search_container">
         <div class="search_bar">
-            <input type="text" placeholder="search" >
+            <input type="text" placeholder="search anything..." >
+            <button type="submit"><img src="{{ url_for('static', filename='images/Lance search Icon.png') }}"></button>
             
-
-
-
-
         </div>
     </div>
+
+    <div class="main">
+        <H1 class="titles_main">Recommended</H1>
+        <div class="recommended">
+            <div class="block_border"><button class="block"></button></div>
+            <div class="block_border"><button class="block"></button></div>
+            <div class="block_border"><button class="block"></button></div>
+            <div class="block_border"><button class="block"></button></div>
+            <div class="block_border"><button class="block"></button></div>
+            <div class="block_border"><button class="block"></button></div>
+            <div class="block_border"><button class="block"></button></div>          
+        </div>
+        <H1 class="titles_main">Recent</H1>
+        <div class="recommended">
+            <div class="block_border"><button class="block"></button></div>
+            <div class="block_border"><button class="block"></button></div>
+            <div class="block_border"><button class="block"></button></div>
+            <div class="block_border"><button class="block"></button></div>
+            <div class="block_border"><button class="block"></button></div>
+            <div class="block_border"><button class="block"></button></div>
+            <div class="block_border"><button class="block"></button></div>          
+        </div>
+
+
+
+
+
+    </div>
+
 
 
 </body>
