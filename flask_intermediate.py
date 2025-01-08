@@ -44,16 +44,16 @@ def pass_hash(user_pass):
 @app.route("/Lance/Create_your_account", methods=["POST","GET"])
 def create_your_account():
     if request.method == "POST":
-        user_name=request.json["name"]
-        user_pass=request.json["password"]
-        user_email=request.json["email"]
-        hashed_password=pass_hash(user_pass)
-        mycursor.execute("INSERT INTO Users (name, password) VALUES (%s, %s)", (user_name, hashed_password))
+        create_user_name=request.json["name"]
+        create_user_pass=request.json["password"]
+        create_user_email=request.json["email"]
+        create_hashed_password=pass_hash(create_user_pass)
+        mycursor.execute("INSERT INTO Users (name, password) VALUES (%s, %s)", (create_user_name, create_hashed_password))
         db.commit()
         
 
-        print("Received POST data:", user_name, user_pass, user_email)
-        print("Hashed password:", hashed_password)
+        print("Received POST data:", create_user_name, create_user_pass, create_user_email)
+        print("Hashed password:", create_hashed_password)
 
         print("Redirecting to /user...") 
 
@@ -62,8 +62,27 @@ def create_your_account():
         return render_template("create_account.html") 
 
 
-@app.route("/Lance/login")
+@app.route("/Lance/login", methods=["POST","GET"])
 def Login():
+    if request.method == "POST":
+        log_user_name=request.json["name"]
+        log_user_pass=request.json["password"]
+        mycursor.execute("SELECT * FROM Users WHERE name=%s",(log_user_name,))
+        user = mycursor.fetchone()
+        if user:
+            print("user found:",user)
+
+            store_pass=user[1]
+
+            if pass_hash(log_user_pass) == store_pass:
+                print("passwords match", user)
+                return redirect("/Lance/Welcome")
+            else:
+                print("Incorrect Password",)
+                return redirect("/Lance/login")
+        else:
+            print("User not found")
+            return redirect("/Lance/login")
     return render_template("Login.html")
 
 
