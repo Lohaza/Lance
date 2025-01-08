@@ -83,6 +83,9 @@
 .main h1{
     color:white
 }
+.main p{
+    color:white
+}
 
 .titles_main{
     margin-top: 5rem;
@@ -94,6 +97,7 @@
     gap:2rem;
     margin-left:2rem;
     margin-right:2rem;
+    width: 100%;
 }
 
 .block{
