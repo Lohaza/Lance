@@ -1,0 +1,29 @@
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/NEA Lance sign-in .css') }}">
+    <script src="{{ url_for('static', filename='js/create account lance.js') }}"></script>
+    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    </head>
+    
+    <main>
+    <body class="outside">
+    <div class="main">
+        <div class="title"> 
+            <img id="lance_nav_logo" src="{{ url_for('static', filename='images/Lance Logo.png') }}">
+            <h1>Please enter the following: <h1>
+            
+        </div>
+        <div class="inputs_container" method="post">
+            <div class="input">
+                <label class="LB" for="username">username:</label>
+                <input id="username_in" type="text" class="inp" placeholder="enter username here.." name="username">
+            </div>
+            <div class="input">
+                <label class="LB" for="password">password:</label>
+                <input id="pass_in" type="password" class="inp" placeholder="enter password here.." name="password">
+            </div>
+            <button type="submit" class="button" onclick="" >ENTER</button>
+        </div>
+    </div>
+    </div>
+    </main>
+    

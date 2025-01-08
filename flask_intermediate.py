@@ -54,6 +54,11 @@ def create_your_account():
         return render_template("create_account.html") 
 
 
+@app.route("/Lance/login")
+def Login():
+    return render_template("Login.html")
+
+
 @app.route("/Lance/Welcome")
 def welcome():
     return render_template("Welcome.html")
