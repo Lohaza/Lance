@@ -116,13 +116,22 @@ def logout():
     return redirect('/Lance')
 
 
-@app.route("/user")
-def user():
-    return "<h1>Welcome</h1>"
+@app.route("/Lance/Profile/<username>")
+def Profile(username):
+    if "user_id" in session: 
+        session_username = session.get("username")  
+        if session_username == username: 
+            return render_template("Profile.html", username=username)
+    else:
+        return render_template("Profile.html", username=None) 
 
 @app.route('/favicon.ico')
 def favicon():
     return '', 204
+
+def index():
+    session['username'] = [0]
+    return render_template("index.html")
 
 
 if __name__ == "__main__":
