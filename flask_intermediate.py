@@ -103,7 +103,18 @@ def welcome():
 
 @app.route("/Lance")
 def Lance():
-    return render_template("Lance.html")
+    if "user_id" in session:
+        username=session.get("username")
+        return render_template("Lance.html", username=username)
+    else:
+        return render_template("Lance.html",username= None)
+
+@app.route('/logout')
+def logout():
+    session.pop('username', None)
+    session.pop('user_id', None)
+    return redirect('/Lance')
+
 
 @app.route("/user")
 def user():
