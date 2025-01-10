@@ -178,7 +178,6 @@ def Profile(username):
         if session_username == username:
             mycursor.execute("SELECT profile_image FROM Users WHERE userID = %s", (session['user_id'],))
             user = mycursor.fetchone()
-            
             if user and user[0]:
                 image_path = user[0]
 
