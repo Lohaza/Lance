@@ -34,10 +34,8 @@
             <img src="{{ url_for('static', filename='images/default_profile.png') }}" alt="Default Profile Image" class="profile_image">
         {% endif %}
 
-        <form action="/Lance/upload_profile_image" method="POST" enctype="multipart/form-data">
             <label for="file">Upload Profile Image:</label>
             <input type="file" name="file" id="file" required>
-            <button type="submit">Upload</button>
-        </form>
+            <button type="submit" onclick="submit(event)">Upload</button>
     </div>
 </body>

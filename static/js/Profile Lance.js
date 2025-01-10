@@ -18,9 +18,20 @@ function logout() {
 }
 
 function submit(event) {
+    window.alert("test submit image")
+    
     event.preventDefault();
 
-    const formData = new FormData(this);
+    let fileInput=document.getElementById("file");
+    const file = fileInput.files[0];
+
+    if (!file) {
+        alert("No file selected.");
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append("file", file);
     
     fetch("http://127.0.0.1:5000/Lance/upload_profile_image", {
         method: "POST",
