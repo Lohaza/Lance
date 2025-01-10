@@ -1,10 +1,10 @@
 <head>
     <title>Lance profile {{ username }}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/NEA Lance profile.css') }}">
-    <script src="{{ url_for('static', filename='js/Profile.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/Profile Lance.js') }}"></script>
 
 </head>
-<body class="background">
+<body class="main">
     <nav class="menu_navbar">
         <ul>
             <li><img id="lance_nav_logo" src="{{ url_for('static', filename='images/Lance Logo.png') }}">></li>
@@ -26,4 +26,18 @@
                 {% endif %}
             </ul>
     </nav>
+
+    <div class="profile_section">
+        {% if image_path %}
+            <img src="{{ url_for('static', filename='uploads/' + image_path) }}" alt="Profile Image" class="profile_image">
+        {% else %}
+            <img src="{{ url_for('static', filename='images/default_profile.png') }}" alt="Default Profile Image" class="profile_image">
+        {% endif %}
+
+        <form action="/Lance/upload_profile_image" method="POST" enctype="multipart/form-data">
+            <label for="file">Upload Profile Image:</label>
+            <input type="file" name="file" id="file" required>
+            <button type="submit">Upload</button>
+        </form>
+    </div>
 </body>

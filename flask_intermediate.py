@@ -2,12 +2,27 @@
 import hashlib
 import logging
 import mysql.connector
-from flask import Flask, render_template, request, redirect, jsonify, session
+from flask import Flask, render_template, request, redirect, jsonify, session, url_for
 from flask_cors import CORS
+import os
+from werkzeug.utils import secure_filename
+
+
+
+
+
+
 app= Flask(__name__, static_folder='static')
 CORS(app)
 
+UPLOAD_FOLDER = 'static/uploads/'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 app.secret_key="EdLMg77c5cZJ"
+
 
 db=mysql.connector.connect(
     host="localhost",
@@ -24,23 +39,60 @@ mycursor=db.cursor()
 #FROM Users"
 #this will show you all the values in the table Users
 
-
-#mycursor.execute("CREATE DATABASE Lance")
-#mycursor.execute("CREATE TABLE Users(name VARCHAR(20),password VARCHAR(300), userID int PRIMARY KEY AUTO_INCREMENT)")
-#mycursor.execute("ALTER TABLE Users MODIFY password VARCHAR(255);")
-#mycursor.execute("SHOW DATABASES")
+# This to create Users
+#CREATE TABLE IF NOT EXISTS Users (
+#    userID INT PRIMARY KEY AUTO_INCREMENT,
+#    name VARCHAR(20) NOT NULL,
+#    password VARCHAR(255) NOT NULL,
+#    profile_image VARCHAR(255), -- To store the file path for the profile image
+#    email VARCHAR(255) -- Email column (if required)
+#);
 
 mycursor.execute("SELECT * FROM Users")
 
 for x in mycursor:
     print(x)
 
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+
+
 def pass_hash(user_pass):
     hash_pass = hashlib.sha256(user_pass.encode())
     hashed_pass=(hash_pass.hexdigest())
     return hashed_pass
 
+@app.route('/Lance/upload_profile_image', methods=['POST'])
+def upload_profile_image():
+    if 'file' not in request.files:
+        return jsonify({"error": "No file part"}), 400
+    
+    file = request.files['file']
+    
+    if file.filename == '':
+        return jsonify({"error": "No selected file"}), 400
+    
+    if file and allowed_file(file.filename):
+        filename = secure_filename(file.filename)
+        print(filename)
+        file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        print(file_path)
+        file.save(file_path)
 
+        # Get user_id from session and update database
+        user_id = session.get('user_id')
+
+        if user_id:
+            # Save only the filename, not the full path
+            mycursor.execute("UPDATE Users SET profile_image = %s WHERE userID = %s", (filename, user_id))
+            db.commit()
+            return jsonify({"message": "Profile image uploaded successfully", "image_path": filename}), 200
+        
+        return jsonify({"error": "User not logged in"}), 401
+    else:
+        return jsonify({"error": "Invalid file type. Only PNG, JPG, JPEG, and GIF are allowed."}), 400
 
 @app.route("/Lance/Create_your_account", methods=["POST","GET"])
 def create_your_account():
@@ -78,12 +130,12 @@ def Login():
             if user:
                 print("user found:",user)
 
-                store_pass=user[1]
+                store_pass=user[2]
 
                 if pass_hash(log_user_pass) == store_pass:
                     print("passwords match", user)
-                    session['user_id'] = user[2]
-                    session['username'] = user[0]
+                    session['user_id'] = user[0]
+                    session['username'] = user[1]
                     return jsonify({"message": "Login successful"}), 200
                 else:
                     print("Incorrect Password",)
@@ -95,6 +147,9 @@ def Login():
         logging.error("An error occurred during login: %s", str(e))
         return jsonify({"error": "Internal Server Error. Please try again later."}), 500
     return render_template("Login.html")
+
+
+
 
 
 @app.route("/Lance/Welcome")
@@ -120,10 +175,19 @@ def logout():
 def Profile(username):
     if "user_id" in session: 
         session_username = session.get("username")  
-        if session_username == username: 
-            return render_template("Profile.html", username=username)
-    else:
-        return render_template("Profile.html", username=None) 
+        if session_username == username:
+            mycursor.execute("SELECT profile_image FROM Users WHERE userID = %s", (session['user_id'],))
+            user = mycursor.fetchone()
+            
+            if user and user[0]:
+                image_path = user[0]
+
+            else:
+                image_path = "images/default_profile.png"
+            
+            return render_template("Profile.html", username=username, image_path=image_path)
+    
+    return render_template("Profile.html", username=None)
 
 @app.route('/favicon.ico')
 def favicon():

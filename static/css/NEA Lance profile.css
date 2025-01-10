@@ -1,9 +1,11 @@
-.background{
+.main{
     height: 100%;
     width: 100%;
     margin:0px;
     background-color: #0b0120;
+    color:white
 }
+
 
 .menu_navbar ul{
     list-style-type: none;
