@@ -1,3 +1,4 @@
+var username = "{{ username }}"; 
 function logout() {
     fetch("http://127.0.0.1:5000/logout", {
         method: "GET",
@@ -75,7 +76,6 @@ function submit(event) {
             .then(response => response.json())
             .then(data => {
                 if (data.message) {
-                    alert(data.message);
                     window.location.reload();  // Reload the page to show updated image
                 } else {
                     alert(data.error);
@@ -93,3 +93,4 @@ function submit(event) {
     // Read the file as a Data URL (base64 string)
     reader.readAsDataURL(file);
     }
+

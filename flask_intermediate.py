@@ -150,7 +150,13 @@ def Login():
 
 
 
-
+@app.route("/Lance/image_upload")
+def image_upload():
+    if "user_id" in session:
+        username=session.get("username")
+        return render_template("image_upload.html", username=username)
+    else:
+        return render_template("image_upload.html",username= None)
 
 @app.route("/Lance/Welcome")
 def welcome():
@@ -187,6 +193,8 @@ def Profile(username):
             return render_template("Profile.html", username=username, image_path=image_path)
     
     return render_template("Profile.html", username=None)
+
+
 
 @app.route('/favicon.ico')
 def favicon():
