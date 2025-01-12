@@ -39,13 +39,17 @@ mycursor=db.cursor()
 #FROM Users"
 #this will show you all the values in the table Users
 
+#CREATE DATABASE Lance;
+#USE Lance
+
+
 # This to create Users
 #CREATE TABLE IF NOT EXISTS Users (
 #    userID INT PRIMARY KEY AUTO_INCREMENT,
 #    name VARCHAR(20) NOT NULL,
 #    password VARCHAR(255) NOT NULL,
-#    profile_image VARCHAR(255), -- To store the file path for the profile image
-#    email VARCHAR(255) -- Email column (if required)
+#    profile_image VARCHAR(255), 
+#    email VARCHAR(255)
 #);
 
 mycursor.execute("SELECT * FROM Users")
@@ -188,7 +192,7 @@ def Profile(username):
                 image_path = user[0]
 
             else:
-                image_path = "images/default_profile.png"
+                image_path = "default_profile.png"
             
             return render_template("Profile.html", username=username, image_path=image_path)
     

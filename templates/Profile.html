@@ -27,14 +27,18 @@
             </ul>
     </nav>
 
-    <div class="profile_section">
-        {% if image_path %}
-            <img src="{{ url_for('static', filename='uploads/' + image_path) }}" alt="Profile Image" class="profile_image">
-        {% else %}
-            <img src="{{ url_for('static', filename='images/default_profile.png') }}" alt="Default Profile Image" class="profile_image">
-        {% endif %}
+    <div class="profile_meta">
+        <div class=profile_border>
+            <div class="profile_section">
+                {% if image_path %}
+                <a href="{{url_for('image_upload')}}" class="upload_image_button"><img src="{{ url_for('static', filename='uploads/' + image_path) }}" alt="Profile Image" class="profile_image"></a>
+                {% else %}
+                <a href="{{url_for('image_upload')}}" class="upload_image_button"><img src="{{ url_for('static', filename='images/default_profile.png') }}" alt="Default Profile Image" class="profile_image"></a>
+                {% endif %}
 
-        <a href="{{url_for('image_upload')}}">Upload</a>
+                
 
+            </div>
+        </div>
     </div>
 </body>

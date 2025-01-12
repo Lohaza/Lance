@@ -34,8 +34,8 @@ function submit(event) {
         const img = new Image();
         img.onload = function() {
             // Set the new size of the image
-            const maxWidth = 200;  // Desired max width (in pixels)
-            const maxHeight = 200; // Desired max height (in pixels)
+            const maxWidth = 100;  // Desired max width (in pixels)
+            const maxHeight = 100; // Desired max height (in pixels)
 
             let width = img.width;
             let height = img.height;
