@@ -1,0 +1,46 @@
+<head>
+    <title>Lance profile {{ username }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/NEA Lance sign-in .css') }}">
+    <script src="{{ url_for('static', filename='js/Profile Lance.js') }}"></script>
+
+</head>
+<main>
+    <nav class="menu_navbar">
+        <ul>
+            <li><img id="lance_nav_logo" src="{{ url_for('static', filename='images/Lance Logo.png') }}">></li>
+            <li><a href="{{url_for('Lance')}}">LANCE</a></li>
+            <li><a href="">Topics</a></li>
+            <li><a href="">support</a></li>
+            <li><a href="">settings</a></li>
+
+
+            <ul class="menu_navbar_right">
+            {%if username %}
+                <li><a>Hello, {{ username }}</a></li>
+                <li><a href="logout" onclick="logout()">Logout</a></li>
+
+
+            {%else%}
+                <li><a href="{{url_for('Login')}}">sign in</a></li>
+                <li><a href="{{url_for('welcome')}}">sign up</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+    <div class="sign-in_container_main">
+        <div>
+    <body class="outside">
+    <body class="main">
+        <div class="main_container">
+            <div class="title"> 
+                <h1>Lance</h1>
+                <h2>Please enter <br> the following: <h2>
+                        
+            </div>
+            <div class="inputs_container" method="post">
+                <label for="file">Upload Profile Image:</label>
+                <input type="file" name="file" id="file" required>
+                <button type="submit" onclick="submit(event)">Upload</button>
+                </div>
+            </div>
+    </div>
+</main>

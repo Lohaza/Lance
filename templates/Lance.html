@@ -1,0 +1,70 @@
+<head>
+    <title>Lance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/NEA Lance.css') }}">
+</head>
+<body class="background">
+    <nav class="menu_navbar">
+        <ul>
+            <li><img id="lance_nav_logo" src="{{ url_for('static', filename='images/Lance Logo.png') }}">></li>
+            <li><a href="{{url_for('Lance')}}">LANCE</a></li>
+            <li><a href="">Topics</a></li>
+            <li><a href="">support</a></li>
+            <li><a href="">settings</a></li>
+
+
+            <ul class="menu_navbar_right">
+                {%if username %}
+                <li><a href="{{url_for('Profile', username=username)}}">Hello, {{ username }}</a></li>
+                <li><a href="logout" onclick="logout()">Logout</a></li>
+
+
+                {%else%}
+                <li><a href="{{url_for('Login')}}">sign in</a></li>
+                <li><a href="{{url_for('welcome')}}">sign up</a></li>
+                {% endif %}
+            </ul>
+    </nav>
+
+    <div class="search_container">
+        <div class="search_bar">
+            <input type="text" placeholder="search anything..." >
+            <button type="submit"><img src="{{ url_for('static', filename='images/Lance search Icon.png') }}"></button>
+            
+        </div>
+    </div>
+
+    <div class="main">
+        <H1 class="titles_main">Recommended</H1>
+        <div class="main_rows">
+            <div class="block_container"><div class="block_border"><button class="block"></button></div><p>block</p></div>
+            <div class="block_container"><div class="block_border"><button class="block"></button></div><p>block</p></div>
+            <div class="block_container"><div class="block_border"><button class="block"></button></div><p>block</p></div>
+            <div class="block_container"><div class="block_border"><button class="block"></button></div><p>block</p></div>
+            <div class="block_container"><div class="block_border"><button class="block"></button></div><p>block</p></div>
+            <div class="block_container"><div class="block_border"><button class="block"></button></div><p>block</p></div>
+            <div class="block_container"><div class="block_border"><button class="block"></button></div><p>block</p></div>
+            <div class="block_container"><div class="block_border"><button class="block"></button></div><p>block</p></div>
+            <div class="block_container"><div class="block_border"><button class="block"></button></div><p>block</p></div>   
+        </div>
+        <H1 class="titles_main">Recent</H1>
+        <div class="main_rows">
+            <div class="block_container"><div class="block_border"><button class="block"></button></div><p>block</p></div>
+            <div class="block_container"><div class="block_border"><button class="block"></button></div><p>block</p></div>
+            <div class="block_container"><div class="block_border"><button class="block"></button></div><p>block</p></div>
+            <div class="block_container"><div class="block_border"><button class="block"></button></div><p>block</p></div>
+            <div class="block_container"><div class="block_border"><button class="block"></button></div><p>block</p></div>
+            <div class="block_container"><div class="block_border"><button class="block"></button></div><p>block</p></div>
+            <div class="block_container"><div class="block_border"><button class="block"></button></div><p>block</p></div>
+            <div class="block_container"><div class="block_border"><button class="block"></button></div><p>block</p></div>
+            <div class="block_container"><div class="block_border"><button class="block"></button></div><p>block</p></div>       
+        </div>
+
+
+
+
+
+    </div>
+
+
+
+</body>

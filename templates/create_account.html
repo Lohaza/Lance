@@ -1,39 +1,37 @@
-<HTML>
 <head>
-<title>create account - Lance accounts</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='css/NEA Lance.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/NEA Lance sign-in .css') }}">
 <script src="{{ url_for('static', filename='js/create account lance.js') }}"></script>
 <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
 </head>
 
 <main>
-<div class="outside">
-<div class="main">
-    <div class="title"> 
-        <img id="lance_nav_logo" src="{{ url_for('static', filename='images/Lance Logo.png') }}">
-        <h1>Create Your Lance Account! </h1>
-        <p>Please enter the following: </p>
-        
+<body class="outside">
+    <div class="main_container">
+        <div class="title"> 
+            <img id="lance_nav_logo" src="{{ url_for('static', filename='images/Lance Logo.png') }}">
+            <h1>Create Your Lance Account! </h1>
+            <p>Please enter the following: </p>
+            
+        </div>
+        <div class="inputs_container" method="post">
+            <div class="input">
+                <label class="LB" for="username">username:</label>
+                <input id="username_in" type="text" class="inp" placeholder="enter username here.." name="username">
+            </div>
+            <div class="input">
+                <label class="LB" for="password">password:</label>
+                <input id="pass_in" type="password" class="inp" placeholder="enter password here.." name="password">
+            </div>
+            <div class="input">
+                <label class="LB" for="confirm password">confirm password:</label>
+                <input id="confirm_pass_in" type="password" class="inp" placeholder="enter password here.." name="con_password">
+            </div>
+            <div class="input">
+                <label class="LB" for="email">email:</label>
+                <input id="email_in" type="text" class="inp" placeholder="enter email here.." name="email">
+            </div>
+            <button type="submit" class="button" onclick="enter()" >ENTER</button>
+        </div>
     </div>
-    <div class="inputs_container" method="post">
-        <div class="input">
-            <label class="LB" for="username">username:</label>
-            <input id="username_in" type="text" class="inp" placeholder="enter username here.." name="username">
-        </div>
-        <div class="input">
-            <label class="LB" for="password">password:</label>
-            <input id="pass_in" type="password" class="inp" placeholder="enter password here.." name="password">
-        </div>
-        <div class="input">
-            <label class="LB" for="confirm password">confirm password:</label>
-            <input id="confirm_pass_in" type="password" class="inp" placeholder="enter password here.." name="con_password">
-        </div>
-        <div class="input">
-            <label class="LB" for="email">email:</label>
-            <input id="email_in" type="text" class="inp" placeholder="enter email here.." name="email">
-        </div>
-        <button type="submit" class="button" onclick="enter()" >ENTER</button>
-    </div>
-</div>
 </div>
 </main>

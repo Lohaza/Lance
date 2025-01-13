@@ -1,7 +1,7 @@
 <html>
 <head>
     <title>sign in - Lance accounts</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/NEA Lance.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/NEA Lance sign-in .css') }}">
 </head>
 
 <body id="signing-up_body">
@@ -10,7 +10,7 @@
     <nav class="menu_navbar">
         <ul>
             <li><img id="lance_nav_logo" src="{{ url_for('static', filename='images/Lance Logo.png') }}">></li>
-            <li><a href="">LANCE</a></li>
+            <li><a href="{{url_for('Lance')}}">LANCE</a></li>
             <li><a href="">Topics</a></li>
             <li><a href="">support</a></li>
             <li><a href="">settings</a></li>
@@ -18,8 +18,8 @@
 
             <div class="menu_navbar_right">
 
-                <li><a href="">sign in</a></li>
-                <li><a href="">sign up</a></li>
+                <li><a href="{{url_for('Login')}}">sign in</a></li>
+                <li><a href="{{url_for('welcome')}}">sign up</a></li>
                 </ul>
             </div>
     </nav>
@@ -38,7 +38,7 @@
                 </a>
 
 
-                <a href="./Login - Lance accounts.html">
+                <a href="{{url_for('Login')}}">
                     <button id="button_login">Login</button>
                 </a>
 
