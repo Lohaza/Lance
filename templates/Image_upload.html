@@ -16,7 +16,7 @@
 
             <ul class="menu_navbar_right">
             {%if username %}
-                <li><a>Hello, {{ username }}</a></li>
+                <li><a href="{{url_for('Profile', username=username)}}" >Hello, {{ username }}</a></li>
                 <li><a href="logout" onclick="logout()">Logout</a></li>
 
 

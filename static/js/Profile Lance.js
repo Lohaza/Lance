@@ -76,7 +76,7 @@ function submit(event) {
             .then(response => response.json())
             .then(data => {
                 if (data.message) {
-                    window.location.reload();  // Reload the page to show updated image
+                    window.location.href = data.redirect_url;  // Reload the page to show updated image
                 } else {
                     alert(data.error);
                 }

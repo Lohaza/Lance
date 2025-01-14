@@ -70,6 +70,7 @@ def pass_hash(user_pass):
 
 @app.route('/Lance/upload_profile_image', methods=['POST'])
 def upload_profile_image():
+    username=session[1]
     if 'file' not in request.files:
         return jsonify({"error": "No file part"}), 400
     
@@ -92,7 +93,7 @@ def upload_profile_image():
             # Save only the filename, not the full path
             mycursor.execute("UPDATE Users SET profile_image = %s WHERE userID = %s", (filename, user_id))
             db.commit()
-            return jsonify({"message": "Profile image uploaded successfully", "image_path": filename}), 200
+            return jsonify({"message": "Profile image uploaded successfully", "image_path": filename,}), 200
         
         return jsonify({"error": "User not logged in"}), 401
     else:
