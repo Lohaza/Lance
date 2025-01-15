@@ -44,23 +44,54 @@
 
 .profile_meta{
     display: flex;
-    width:100%;
+    width:80%;
     height:200px;
     margin-left: 10rem;
     margin-right: 10rem;
+    background-color: #160f26;
+    border-radius: 25px;
 }
 
 .upload_image_button:hover{
     color: rgba(255, 255, 255, 50);
 }
-
 .profile_border{
+    margin-left:3rem;
+    margin-top: 2rem;
+}
+
+
+.username h2{
+    margin-top: 0;
+    font-size:medium;
+}
+
+.username{
+    margin-left: 2rem;
+    margin-top:1rem;
+    
+}
+
+.username h1{
+    margin-bottom: 0;
+}
+
+
+.profile_border:hover{
     display: flex;
-    border-width: 4px;
-    border-style:solid;
+    border-width: 4px !important;
+    border-style:solid !important;
     border: white;
-    height: 105px;
-    width:105px;
+    height: 110px;
+    width:110px;
     align-items: center;
-    justify-content: center
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.profile_image {
+    width: 106.7px;
+    height: 106.7px;
+    object-fit: cover; 
+    border-radius: 50%;
 }

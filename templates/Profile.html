@@ -7,7 +7,7 @@
 <body class="main">
     <nav class="menu_navbar">
         <ul>
-            <li><img id="lance_nav_logo" src="{{ url_for('static', filename='images/Lance Logo.png') }}">></li>
+            <li><img id="lance_nav_logo" src="{{ url_for('static', filename='images/Lance Logo.png') }}"></li>
             <li><a href="{{url_for('Lance')}}">LANCE</a></li>
             <li><a href="">Topics</a></li>
             <li><a href="">support</a></li>
@@ -28,7 +28,7 @@
     </nav>
 
     <div class="profile_meta">
-        <div class=profile_border>
+        <div class="profile_border">
             <div class="profile_section">
                 {% if image_path %}
                 <a href="{{url_for('image_upload')}}" class="upload_image_button"><img src="{{ url_for('static', filename='uploads/' + image_path) }}" alt="Profile Image" class="profile_image"></a>
@@ -39,6 +39,11 @@
                 
 
             </div>
+        </div>
+        <div class="Username">
+            <h1>{{username}}</h1>
+            <h2>@{{username}}</h2>
+
         </div>
     </div>
 </body>
