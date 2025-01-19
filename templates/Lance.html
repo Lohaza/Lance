@@ -27,11 +27,14 @@
     </nav>
 
     <div class="search_container">
-        <div class="search_bar">
+        <div class="search_bar" onclick="search_page()">
+            
             <input type="text" placeholder="search anything..." >
             <button type="submit" onclick="submit()"><img src="{{ url_for('static', filename='images/Lance search Icon.png') }}"></button>
+        
             
         </div>
+        
     </div>
 
     <div class="main">

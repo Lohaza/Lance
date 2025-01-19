@@ -8,10 +8,6 @@ import os
 from werkzeug.utils import secure_filename
 
 
-
-
-
-
 app= Flask(__name__, static_folder='static')
 CORS(app)
 
@@ -90,7 +86,6 @@ def upload_profile_image():
         user_id = session.get('user_id')
 
         if user_id:
-            # Save only the filename, not the full path
             mycursor.execute("UPDATE Users SET profile_image = %s WHERE userID = %s", (filename, user_id))
             db.commit()
             return jsonify({"message": "Profile image uploaded successfully", "image_path": filename,}), 200
@@ -182,6 +177,7 @@ def logout():
     return redirect('/Lance')
 
 
+
 @app.route("/Lance/Profile/<username>")
 def Profile(username):
     if "user_id" in session: 
@@ -201,12 +197,8 @@ def Profile(username):
 
 
 @app.route("/Lance/search")
-def search(username):
-    if "user_id" in session:
-        username=session.get("username")
-        return render_template("search.html", username=username)
-    else:
-        return render_template("search.html",username= None)
+def search():
+    return render_template("search.html")
 
 
 
