@@ -1,6 +1,7 @@
 <head>
     <title>Lance</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/NEA Lance.css') }}">
+    <script src="{{ url_for('static', filename='js/Lance.js') }}"></script>
 </head>
 <body class="background">
     <nav class="menu_navbar">
@@ -28,7 +29,7 @@
     <div class="search_container">
         <div class="search_bar">
             <input type="text" placeholder="search anything..." >
-            <button type="submit"><img src="{{ url_for('static', filename='images/Lance search Icon.png') }}"></button>
+            <button type="submit" onclick="submit()"><img src="{{ url_for('static', filename='images/Lance search Icon.png') }}"></button>
             
         </div>
     </div>

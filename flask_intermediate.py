@@ -200,6 +200,15 @@ def Profile(username):
     return render_template("Profile.html", username=None)
 
 
+@app.route("/Lance/search")
+def search(username):
+    if "user_id" in session:
+        username=session.get("username")
+        return render_template("search.html", username=username)
+    else:
+        return render_template("search.html",username= None)
+
+
 
 @app.route('/favicon.ico')
 def favicon():
@@ -208,6 +217,9 @@ def favicon():
 def index():
     session['username'] = [0]
     return render_template("index.html")
+
+
+
 
 
 if __name__ == "__main__":
