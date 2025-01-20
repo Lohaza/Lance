@@ -21,10 +21,10 @@ app.secret_key="EdLMg77c5cZJ"
 
 
 db=mysql.connector.connect(
-    host="localhost",
+    host="S230735",
     user="root",
     passwd="root",
-    database="Lance"
+    database="Database"
     
 )
 
