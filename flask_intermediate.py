@@ -196,9 +196,24 @@ def Profile(username):
     return render_template("Profile.html", username=None)
 
 
-@app.route("/Lance/search")
+@app.route("/Lance/search", methods=["POST","GET"])
 def search():
-    return render_template("search.html")
+    if "user_id" in session:
+        username = session.get("username")
+        if request.method == "POST":
+            create_search=request.json["search"]
+            print("Received POST data:",create_search)
+            
+            return render_template("search.html",username=username)
+        else:
+            return render_template("search.html",username=username)
+    else:
+        if request.method == "POST":
+            create_search=request.json["search"]
+            print("Received POST data:")
+            return render_template("search.html",username=None)
+        else:
+            return render_template("search.html",username=None)
 
 
 

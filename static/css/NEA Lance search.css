@@ -6,6 +6,42 @@
     color:white
 }
 
+
+.menu_navbar ul{
+    list-style-type: none;
+    background-color:#0b0120 ;
+    padding: 5px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.menu_navbar a:hover{
+    background-color: #3e8e41;
+}
+.menu_navbar li{
+    float:left;
+}
+
+
+.menu_navbar_right {
+    float: right;
+}
+
+#lance_nav_logo{
+    height: 70px;
+    width: 70px;
+}
+
+.menu_navbar a{
+    color: white;
+    text-decoration:none ;
+    padding: 15px;
+    display: block;
+    text-align: center;
+    font-size: 17px;
+    width: 60px;
+}    
+
 .search_container{
     display:flex;
     align-items: center;

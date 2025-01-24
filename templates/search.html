@@ -1,11 +1,33 @@
 <head>
     <title>Lance Search</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/NEA Lance search.css') }}">
+    <script src="{{ url_for('static', filename='js/search Lance.js') }}"></script>
 </head>
 <body class="background">
+    <nav class="menu_navbar">
+        <ul>
+            <li><img id="lance_nav_logo" src="{{ url_for('static', filename='images/Lance Logo.png') }}"></li>
+            <li><a href="{{url_for('Lance')}}">LANCE</a></li>
+            <li><a href="">Topics</a></li>
+            <li><a href="">support</a></li>
+            <li><a href="">settings</a></li>
+
+
+            <ul class="menu_navbar_right">
+                {%if username %}
+                <li><a href="{{url_for('Profile', username=username)}}">Hello, {{ username }}</a></li>
+                <li><a href="logout" onclick="logout()">Logout</a></li>
+
+
+                {%else%}
+                <li><a href="{{url_for('Login')}}">sign in</a></li>
+                <li><a href="{{url_for('welcome')}}">sign up</a></li>
+                {% endif %}
+            </ul>
+    </nav>
     <div class="search_container">
         <div class="search_bar">
-            <input type="text" placeholder="search anything..." >
+            <input id="input_search" type="text" placeholder="search anything..."  name="input_search">
             <button type="submit" onclick="submit()"><img src="{{ url_for('static', filename='images/Lance search Icon.png') }}"></button>
         </div>
     </div>
