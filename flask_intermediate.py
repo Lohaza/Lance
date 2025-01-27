@@ -48,7 +48,20 @@ mycursor=db.cursor()
 #    email VARCHAR(255)
 #);
 
+# This to create guide
+#CREATE TABLE IF NOT EXISTS guide (
+#    guideID INT PRIMARY KEY AUTO_INCREMENT,
+#    guidename VARCHAR(20) NOT NULL, 
+#    auther VARCHAR(255)
+#);
+
+#mycursor.execute("INSERT INTO guide (guidename) VALUES (%s)",(["harrisguide"]))
 mycursor.execute("SELECT * FROM Users")
+
+for x in mycursor:
+    print(x)
+
+mycursor.execute("SELECT * FROM guide")
 
 for x in mycursor:
     print(x)

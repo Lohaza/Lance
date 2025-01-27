@@ -9,8 +9,8 @@
             <li><img id="lance_nav_logo" src="{{ url_for('static', filename='images/Lance Logo.png') }}">></li>
             <li><a href="{{url_for('Lance')}}">LANCE</a></li>
             <li><a href="">Topics</a></li>
-            <li><a href="">support</a></li>
-            <li><a href="">settings</a></li>
+            <li><a href="">Support</a></li>
+            <li><a href="">Settings</a></li>
 
 
             <ul class="menu_navbar_right">
@@ -20,8 +20,8 @@
 
 
                 {%else%}
-                <li><a href="{{url_for('Login')}}">sign in</a></li>
-                <li><a href="{{url_for('welcome')}}">sign up</a></li>
+                <li><a href="{{url_for('Login')}}">Sign In</a></li>
+                <li><a href="{{url_for('welcome')}}">Sign Up</a></li>
                 {% endif %}
             </ul>
     </nav>
