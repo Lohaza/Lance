@@ -72,7 +72,7 @@ function submit(event) {
             .then(response => response.json())
             .then(data => {
                 if (data.message) {
-                    window.relodad()
+                    window.location.reload();
                 } else {
                     alert(data.error);
                 }

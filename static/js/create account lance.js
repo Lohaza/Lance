@@ -19,7 +19,7 @@ function enter(){
     })
     .then (response=> {
         if (response.ok){
-            window.location.href="/user";
+            window.location.href="/Lance/login";
         }else{
             console.log("Error withe the request:", response);
         }

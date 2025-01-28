@@ -79,7 +79,6 @@ def pass_hash(user_pass):
 
 @app.route('/Lance/upload_profile_image', methods=['POST'])
 def upload_profile_image():
-    username=session[1]
     if 'file' not in request.files:
         return jsonify({"error": "No file part"}), 400
     
@@ -115,15 +114,8 @@ def create_your_account():
         create_user_email=request.json["email"]
         create_hashed_password=pass_hash(create_user_pass)
         mycursor.execute("INSERT INTO Users (name, password) VALUES (%s, %s)", (create_user_name, create_hashed_password))
-        db.commit()
-        
-
-        print("Received POST data:", create_user_name, create_user_pass, create_user_email)
-        print("Hashed password:", create_hashed_password)
-
-        print("Redirecting to /user...") 
-
-        return redirect("/user")
+        db.commit() 
+        return redirect("/Lance/login",)
     else:
         return render_template("create_account.html") 
 
