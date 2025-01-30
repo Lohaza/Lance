@@ -72,7 +72,7 @@ function submit(event) {
             .then(response => response.json())
             .then(data => {
                 if (data.message) {
-                    window.location.reload();
+                    window.location.href = "/Lance";
                 } else {
                     alert(data.error);
                 }

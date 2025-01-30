@@ -106,3 +106,9 @@
     background-color: #160f26;
     border-radius: 25px;
 }
+
+.upload_manual{
+    display: flex;
+    width:4rem;
+    float: right;
+}

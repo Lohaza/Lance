@@ -1,0 +1,96 @@
+.background{
+    height: 100%;
+    width: 100%;
+    margin:0px;
+    background-color: #0b0120;
+}
+
+.menu_navbar ul{
+    list-style-type: none;
+    background-color:#0b0120 ;
+    padding: 5px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+.menu_navbar a:hover{
+    background-color: #3e8e41;
+}
+.menu_navbar li{
+    float:left;
+}
+
+
+.menu_navbar_right {
+    float: right;
+}
+
+#lance_nav_logo{
+    height: 70px;
+    width: 70px;
+}
+
+.menu_navbar a{
+    color: white;
+    text-decoration:none ;
+    padding: 15px;
+    display: block;
+    text-align: center;
+    font-size: 17px;
+    width: 60px;
+}    
+
+.upload_container{
+    display: flex;
+    background-color: #160f26;
+    border-radius:25px;
+    width:95%;
+    height:700px;
+    margin-left: 2%;
+    margin-right: 2%;
+    color:white;
+    gap:10rem;
+}
+
+.meta_data{
+    display:flex;
+    flex-direction:column;
+    margin-left:4rem;
+    margin-top:4rem;
+    gap:2rem;
+    width:16rem;
+}
+#manual_description_data{
+    width:98%;
+    height:98%;
+    resize: none;
+}
+
+.meta_data_border{
+    width:16rem;
+    height:23px;
+    border:white;
+    border-style: solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#manual_description_data_border{
+    width:16rem;
+    height:22rem;
+    border: white;
+    border-style: solid; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#manual_name_data{
+    height:90%;
+    width:99%;
+}
+
+.upload_input{
+    width:16rem;
+}

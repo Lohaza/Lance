@@ -100,6 +100,7 @@ def upload_profile_image():
         if user_id:
             mycursor.execute("UPDATE Users SET profile_image = %s WHERE userID = %s", (filename, user_id))
             db.commit()
+            
             return jsonify({"message": "Profile image uploaded successfully", "image_path": filename,}), 200
         
         return jsonify({"error": "User not logged in"}), 401
@@ -220,7 +221,13 @@ def search():
         else:
             return render_template("search.html",username=None)
 
-
+@app.route("/Lance/upload_manual")
+def upload_manual():
+    if "user_id" in session:
+        username=session.get("username")
+        return render_template("manual upload.html",username=username)
+    else:
+        return render_template("manual upload.html",username=None)
 
 @app.route('/favicon.ico')
 def favicon():

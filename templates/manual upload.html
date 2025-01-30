@@ -1,0 +1,50 @@
+<head>
+    <title> Lance Manual upload</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/NEA Lance manual.css') }}">
+</head>
+<body class="background">
+    <nav class="menu_navbar">
+        <ul>
+            <li><img id="lance_nav_logo" src="{{ url_for('static', filename='images/Lance Logo.png') }}"></li>
+            <li><a href="{{url_for('Lance')}}">LANCE</a></li>
+            <li><a href="">Topics</a></li>
+            <li><a href="">Support</a></li>
+            <li><a href="">Settings</a></li>
+
+
+            <ul class="menu_navbar_right">
+                {%if username %}
+                <li><a href="{{url_for('Profile', username=username)}}">Hello, {{ username }}</a></li>
+                <li><a href="logout" onclick="logout()">Logout</a></li>
+
+
+                {%else%}
+                <li><a href="{{url_for('Login')}}">Sign In</a></li>
+                <li><a href="{{url_for('welcome')}}">Sign Up</a></li>
+                {% endif %}
+            </ul>
+    </nav>
+    <div class="upload_container">
+        <div class="meta_data">
+            <h1>Please enter the following:</h1>
+            <div class="meta_input_container">
+                <Label>Manual name:</Label><br>
+                <div class="meta_data_border"><input type="text" placeholder="Enter..." name="manual_name_data" id="manual_name_data" ></div>
+            </div>
+            <div class="meta_input_container">
+                <Label>Manual description:</Label><br>
+                <div id="manual_description_data_border"><textarea type="text" placeholder="Enter..." name="manual_description_data" id="manual_description_data" ></textarea></div>
+            </div>
+        </div> 
+        <div class="upload_input">
+            
+
+
+
+
+        </div>
+    </div>
+
+
+
+</body>
