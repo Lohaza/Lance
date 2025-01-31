@@ -92,5 +92,9 @@
 }
 
 .upload_input{
+    display: flex;
+    flex-direction: column;
     width:16rem;
+    left:10rem;
+    margin-top:4rem;
 }
