@@ -17,6 +17,15 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
+
+UPLOAD_MANUAL_FOLDER = 'static/manual_uploads/'
+ALLOWED_MANUAL_EXTENSIONS = {'txt','pdf'}
+app.config['UPLOAD_MANUAL_FOLDER'] = UPLOAD_MANUAL_FOLDER
+if not os.path.exists(UPLOAD_MANUAL_FOLDER):
+    os.makedirs(UPLOAD_MANUAL_FOLDER)
+
+
+
 app.secret_key="EdLMg77c5cZJ"
 
 
@@ -53,6 +62,7 @@ mycursor=db.cursor()
 #    guideID INT PRIMARY KEY AUTO_INCREMENT,
 #    guidename VARCHAR(20) NOT NULL, 
 #    auther VARCHAR(255)
+#    guide_url VARCHAR(255)
 #);
 
 #mycursor.execute("INSERT INTO guide (guidename) VALUES (%s)",(["harrisguide"]))
@@ -68,6 +78,9 @@ for x in mycursor:
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+def allowed_manual_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_MANUAL_EXTENSIONS
 
 
 
@@ -220,6 +233,42 @@ def search():
             return render_template("search.html",username=None)
         else:
             return render_template("search.html",username=None)
+
+@app.route("/Lance/upload_manual_method", methods=["POST"])
+def upload_manual_method():
+    if "user_id" in session:
+        filename = None
+        username=session.get("username")
+        if request.method == "POST":
+            if 'file' not in request.files:
+                return jsonify({"error": "No file part"}), 400
+            
+            file = request.files['file']
+
+            if file.filename == '':
+                return jsonify({"error": "No selected file"}), 400
+            
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                print(filename)
+                file_path = os.path.join(app.config['UPLOAD_MANUAL_FOLDER'], filename)
+                print(file_path)
+                file.save(file_path)
+
+            user_id = session.get('user_id')
+            username = session.get('username')
+            guidename_value="G"
+
+            
+
+            if user_id:
+                mycursor.execute("INSERT INTO guide (guide_url, guidename) VALUES (%s, %s)", (filename, guidename_value))
+                db.commit()
+            
+                return jsonify({"message": "Manual uploaded successfully", "file_path": filename,}), 200
+        return jsonify({"message": "error, manual transmition not working"})
+            
+
 
 @app.route("/Lance/upload_manual")
 def upload_manual():
