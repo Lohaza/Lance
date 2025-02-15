@@ -6,6 +6,7 @@ from flask import Flask, render_template, request, redirect, jsonify, session, u
 from flask_cors import CORS
 import os
 from werkzeug.utils import secure_filename
+import uuid
 
 
 app= Flask(__name__, static_folder='static')
@@ -79,9 +80,10 @@ for x in mycursor:
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-def allowed_manual_file(filename):
-    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_MANUAL_EXTENSIONS
-
+def generate_unique_filename(filename):
+    ext = filename.rsplit('.', 1)[1].lower()
+    unique_filename = str(uuid.uuid4()) + '.' + ext
+    return unique_filename
 
 
 
@@ -248,7 +250,7 @@ def upload_manual_method():
             if file.filename == '':
                 return jsonify({"error": "No selected file"}), 400
             
-            if file and allowed_file(file.filename):
+            if file and generate_unique_filename(file.filename):
                 filename = secure_filename(file.filename)
                 print(filename)
                 file_path = os.path.join(app.config['UPLOAD_MANUAL_FOLDER'], filename)
