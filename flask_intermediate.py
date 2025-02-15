@@ -242,6 +242,13 @@ def upload_manual_method():
         filename = None
         username=session.get("username")
         if request.method == "POST":
+            ManualName = request.form.get("manual_name_data")
+            print("Manual name:", request.form.get("manual_name_data"))
+
+            if not ManualName:
+                return jsonify({"error": "Manual name is required"}), 400
+        
+
             if 'file' not in request.files:
                 return jsonify({"error": "No file part"}), 400
             
@@ -259,12 +266,12 @@ def upload_manual_method():
 
             user_id = session.get('user_id')
             username = session.get('username')
-            guidename_value="G"
+
 
             
 
             if user_id:
-                mycursor.execute("INSERT INTO guide (guide_url, guidename) VALUES (%s, %s)", (filename, guidename_value))
+                mycursor.execute("INSERT INTO guide (guide_url, guidename) VALUES (%s, %s)", (filename, ManualName))
                 db.commit()
             
                 return jsonify({"message": "Manual uploaded successfully", "file_path": filename,}), 200

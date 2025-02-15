@@ -1,7 +1,7 @@
 function submit(event) {
     event.preventDefault();
     let fileInput=document.getElementById("file");
-    let ManualName=document.getElementById("manual_name_data")
+    let manual_name_data=document.getElementById("manual_name_data").value;
     const file = fileInput.files[0];
 
     if (!file) {
@@ -11,6 +11,7 @@ function submit(event) {
 
     const formData = new FormData();
     formData.append("file", file, file.name);
+    formData.append("manual_name_data", manual_name_data);
 
 
     fetch("http://127.0.0.1:5000/Lance/upload_manual_method", {
