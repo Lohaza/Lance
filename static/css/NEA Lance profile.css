@@ -43,7 +43,8 @@
 }    
 
 .profile_meta{
-    display: flex;
+    display:flex;
+    flex-direction: row;
     width:80%;
     height:200px;
     margin-left: 10rem;
@@ -51,6 +52,8 @@
     background-color: #160f26;
     border-radius: 25px;
 }
+
+
 
 .upload_image_button:hover{
     color: rgba(255, 255, 255, 50);
@@ -107,8 +110,31 @@
     border-radius: 25px;
 }
 
-.upload_manual{
-    display: flex;
-    width:4rem;
-    float: right;
+.upload_manual_button{
+    display:flex;
+    width: 75px;
+    height:75px;
+    position: relative;
+
+
+
 }
+.upload_manual_button_cover{
+    display:flex;
+    align-items: center;
+    position: relative;
+
+}
+
+.upload_manual_button_cover--end {
+    margin-left: auto;
+  }
+  
+  .profile_meta--reverse {
+    flex-direction: row-reverse;
+  }
+  
+  .profile_meta--reverse .upload_manual_button_cover--end {
+    margin-right: auto;
+    margin-left: 0;
+  }

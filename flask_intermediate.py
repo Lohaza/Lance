@@ -127,7 +127,7 @@ def create_your_account():
     if request.method == "POST":
         create_user_name=request.json["name"]
         create_user_pass=request.json["password"]
-        create_user_email=request.json["email"]
+        create_user_email=request.json["email"] 
         create_hashed_password=pass_hash(create_user_pass)
         mycursor.execute("INSERT INTO Users (name, password) VALUES (%s, %s)", (create_user_name, create_hashed_password))
         db.commit() 
@@ -224,17 +224,33 @@ def search():
         if request.method == "POST":
             create_search=request.json["search"]
             print("Received POST data:",create_search)
-            
-            return render_template("search.html",username=username)
+
+            mycursor.execute("SELECT * FROM guide WHERE guidename= %s",(create_search,))
+            manual = mycursor.fetchone()
+            if manual:
+                manualname=manual[1]
+                return render_template("search.html",username=username,manualname=manualname)
+        
         else:
             return render_template("search.html",username=username)
+        
     else:
         if request.method == "POST":
             create_search=request.json["search"]
-            print("Received POST data:")
-            return render_template("search.html",username=None)
+            print("Received POST data:",create_search)
+
+            mycursor.execute("SELECT * FROM guide WHERE guidename= %s",(create_search,))
+            manual = mycursor.fetchone()
+            print(manual)
+            if manual:
+                manualname=manual[1]
+                return render_template("search.html",username=None,manualname=manualname)
+            else:
+                print("no manual found")
+        
         else:
             return render_template("search.html",username=None)
+        
 
 @app.route("/Lance/upload_manual_method", methods=["POST"])
 def upload_manual_method():

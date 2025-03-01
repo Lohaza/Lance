@@ -45,9 +45,8 @@
             <h2>@{{username}}</h2>
 
         </div>
-        <div class="upload_manual">
-            <a id="upload_manual_button" href="{{url_for('upload_manual')}}">+</a>
-
+    <div class="profile_meta profile_meta--reverse">
+        <a href="{{url_for('upload_manual')}}" class="upload_manual_button_cover"><img src= "{{url_for('static', filename='images/plus_sign.webp')}}" class="upload_manual_button" ></a>
         </div>
     </div>
     <div class="profile_content">
